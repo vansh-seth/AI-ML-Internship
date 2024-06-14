@@ -108,3 +108,80 @@ print(clf.predict([[1, 1]]))  # Output: [0.5]
 
 The run-time cost to construct a balanced binary tree is \(O(n \log(n))\) and the query time is \(O(\log(n))\). The tree construction involves searching through the features to find the one that offers the largest reduction in impurity, leading to a total cost of \(O(n \log(n) d)\), where \(d\) is the number of features.
 
+
+# Decision Tree Result Explained
+
+A decision tree uses previous decisions to calculate the odds of whether you want to go see a comedian or not. Let’s break down the different aspects of the decision tree.
+
+## Rank
+
+### Root Node
+- **Rank <= 6.5**: Comedians with a rank of 6.5 or lower follow the True arrow (left), while those with a rank higher than 6.5 follow the False arrow (right).
+- **gini = 0.497**: Indicates the quality of the split. A value between 0.0 (perfect split) and 0.5 (no information gain).
+- **samples = 13**: Number of comedians considered at this step (all comedians).
+- **value = [6, 7]**: Among the 13 comedians, 6 will get a "NO" and 7 will get a "GO".
+
+### Gini Calculation
+The Gini impurity for this split is calculated as:
+\[ \text{Gini} = 1 - \left(\frac{x}{n}\right)^2 - \left(\frac{y}{n}\right)^2 \]
+Where:
+- \( x \) = number of "GO" answers = 7
+- \( y \) = number of "NO" answers = 6
+- \( n \) = total number of samples = 13
+
+\[ \text{Gini} = 1 - \left(\frac{7}{13}\right)^2 - \left(\frac{6}{13}\right)^2 = 0.497 \]
+
+## First Split
+
+### Left Branch (Rank <= 6.5)
+- **gini = 0.0**: All samples have the same result.
+- **samples = 5**: Number of comedians in this branch.
+- **value = [5, 0]**: All 5 comedians get a "NO".
+
+### Right Branch (Rank > 6.5)
+- **gini = 0.219**: Indicates a good quality split.
+- **samples = 8**: Number of comedians in this branch.
+- **value = [1, 7]**: Among these 8 comedians, 1 gets a "NO" and 7 get a "GO".
+
+## Second Split (Right Branch, Rank > 6.5)
+
+### Left Branch (Nationality <= 0.5, e.g., UK)
+- **gini = 0.375**: Indicates the quality of the split.
+- **samples = 4**: Number of comedians from the UK.
+- **value = [1, 3]**: Among these 4 comedians, 1 gets a "NO" and 3 get a "GO".
+
+### Right Branch (Nationality > 0.5)
+- **gini = 0.0**: All samples have the same result.
+- **samples = 4**: Number of non-UK comedians.
+- **value = [0, 4]**: All 4 comedians get a "GO".
+
+## Third Split (Left Branch, Nationality <= 0.5)
+
+### Left Branch (Age <= 35.5)
+- **gini = 0.0**: All samples have the same result.
+- **samples = 2**: Number of comedians aged 35.5 or younger.
+- **value = [0, 2]**: Both comedians get a "GO".
+
+### Right Branch (Age > 35.5)
+- **gini = 0.5**: Split quality indicates equal distribution.
+- **samples = 2**: Number of comedians older than 35.5.
+- **value = [1, 1]**: One comedian gets a "NO" and one gets a "GO".
+
+## Fourth Split (Right Branch, Age > 35.5)
+
+### Left Branch (Experience <= 9.5)
+- **gini = 0.0**: All samples have the same result.
+- **samples = 1**: One comedian with 9.5 years of experience or less.
+- **value = [0, 1]**: This comedian gets a "GO".
+
+### Right Branch (Experience > 9.5)
+- **gini = 0.0**: All samples have the same result.
+- **samples = 1**: One comedian with more than 9.5 years of experience.
+- **value = [1, 0]**: This comedian gets a "NO".
+
+## Summary
+
+- The decision tree helps determine whether you would go see a comedian based on their rank, nationality, age, and experience.
+- Each split represents a decision point that filters comedians into "GO" or "NO" categories.
+- The Gini index measures the purity of each split, aiming for values closer to 0 for pure nodes.
+- The tree's structure allows for clear and interpretable decision rules based on the given criteria.
