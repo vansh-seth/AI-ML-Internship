@@ -117,6 +117,3 @@ print(clf.predict([[1, 1]]))  # Output: [0.5]
 
 The run-time cost to construct a balanced binary tree is \(O(n \log(n))\) and the query time is \(O(\log(n))\). The tree construction involves searching through the features to find the one that offers the largest reduction in impurity, leading to a total cost of \(O(n \log(n) d)\), where \(d\) is the number of features.
 
-## References
-
-- M. Dumont et al., "Fast multi-class image annotation with random subwindows and multiple output randomized trees," International Conference on Computer Vision Theory and Applications, 2009.
