@@ -95,6 +95,108 @@ Accuracy (RBF Kernel): 76.67
 F1 (RBF Kernel): 76.36
 ```
 
-## Conclusion
+### Support Vector Machines
 
-This tutorial introduced classification, SVM, and their application in multiclass classification. We provided a Python example demonstrating the use of SVM with different kernels on the Iris dataset. The RBF kernel outperformed the Polynomial kernel in this case. Experiment with hyperparameters like C, gamma, and degree to optimize performance for your specific dataset.
+Support vector machines (SVMs) are a set of supervised learning methods used for classification, regression, and outlier detection.
+
+#### Advantages of Support Vector Machines:
+- **Effective in high dimensional spaces.**
+- **Still effective in cases where the number of dimensions is greater than the number of samples.**
+- **Uses a subset of training points in the decision function (called support vectors), making it memory efficient.**
+- **Versatile:** Different kernel functions can be specified for the decision function. Common kernels are provided, but custom kernels can also be specified.
+
+#### Disadvantages of Support Vector Machines:
+- **Overfitting Risk:** If the number of features is much greater than the number of samples, avoiding overfitting in choosing kernel functions and the regularization term is crucial.
+- **Probability Estimates:** SVMs do not directly provide probability estimates; these are calculated using an expensive five-fold cross-validation.
+
+SVMs in scikit-learn support both dense (numpy.ndarray) and sparse (scipy.sparse) sample vectors as input. For optimal performance, use C-ordered numpy.ndarray (dense) or scipy.sparse.csr_matrix (sparse) with dtype=float64.
+
+#### Classification
+`SVC`, `NuSVC`, and `LinearSVC` are classes capable of performing binary and multi-class classification on a dataset.
+
+![image](https://github.com/vansh-seth/AI-ML-Internship/assets/111755254/d2b3663c-0600-444c-8855-bff88bc14b34)
+
+`SVC` and `NuSVC` are similar methods but accept slightly different sets of parameters and have different mathematical formulations. `LinearSVC` is a faster implementation of Support Vector Classification for the case of a linear kernel and uses `squared_hinge` loss. 
+
+Example:
+```python
+from sklearn import svm
+X = [[0, 0], [1, 1]]
+y = [0, 1]
+clf = svm.SVC()
+clf.fit(X, y)
+clf.predict([[2., 2.]])
+```
+
+#### Multi-class Classification
+`SVC` and `NuSVC` implement the “one-versus-one” approach for multi-class classification. `LinearSVC` implements the “one-vs-the-rest” strategy, thus training `n_classes` models.
+
+Example:
+```python
+X = [[0], [1], [2], [3]]
+Y = [0, 1, 2, 3]
+clf = svm.SVC(decision_function_shape='ovo')
+clf.fit(X, Y)
+clf.decision_function([[1]]).shape[1]
+```
+
+#### Scores and Probabilities
+The `decision_function` method of `SVC` and `NuSVC` gives per-class scores for each sample. When `probability=True`, class membership probability estimates are enabled. The probabilities are calibrated using Platt scaling.
+
+#### Unbalanced Problems
+In problems where it is desired to give more importance to certain classes or samples, the parameters `class_weight` and `sample_weight` can be used. `SVC` implements `class_weight` in the fit method, and all SVM variants implement `sample_weight`.
+
+![image](https://github.com/vansh-seth/AI-ML-Internship/assets/111755254/eba9c290-c76e-4f77-b251-44c4fc69bdd0)
+
+#### Regression
+Support Vector Regression (SVR) extends support vector classification to solve regression problems. There are three different implementations of SVR: `SVR`, `NuSVR`, and `LinearSVR`.
+
+Example:
+```python
+from sklearn import svm
+X = [[0, 0], [2, 2]]
+y = [0.5, 2.5]
+regr = svm.SVR()
+regr.fit(X, y)
+regr.predict([[1, 1]])
+```
+
+#### Density Estimation and Novelty Detection
+The class `OneClassSVM` implements a One-Class SVM used in outlier detection.
+
+#### Complexity
+SVMs have high computational and memory requirements. The core of an SVM is a quadratic programming problem (QP), separating support vectors from the rest of the training data. The algorithm in `LinearSVC` is more efficient and can scale almost linearly to millions of samples and/or features.
+
+#### Practical Tips
+- **Avoiding Data Copy:** Ensure data is C-ordered and double precision for optimal performance.
+- **Kernel Cache Size:** Increasing the kernel cache size can improve run times.
+- **Setting C:** A lower C value can help with noisy observations.
+- **Data Scaling:** Scale your data to improve performance and ensure meaningful results.
+- **Randomness Control:** Use `random_state` to control the randomness in `SVC`, `NuSVC`, and `LinearSVC`.
+
+#### Kernel Functions
+SVMs can use various kernel functions:
+- **Linear:** 
+- **Polynomial:** 
+- **RBF (Gaussian):** 
+- **Sigmoid:** 
+
+Example:
+```python
+linear_svc = svm.SVC(kernel='linear')
+rbf_svc = svm.SVC(kernel='rbf')
+```
+
+#### Custom Kernels
+You can define custom kernels by passing a function to the `kernel` parameter or using pre-computed kernels.
+
+Example:
+```python
+import numpy as np
+from sklearn import svm
+
+def my_kernel(X, Y):
+    return np.dot(X, Y.T)
+
+clf = svm.SVC(kernel=my_kernel)
+```
