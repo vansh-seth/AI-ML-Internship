@@ -26,12 +26,20 @@ SVM is a supervised learning algorithm used for classification and regression. I
 
 SVM aims to maximize the margin between classes by transforming data using various kernel functions (Linear, Polynomial, Gaussian, RBF, Sigmoid). The support vectors are the data points closest to the hyperplane.
 
+![image](https://github.com/vansh-seth/AI-ML-Internship/assets/111755254/d5a31fdc-cdac-4f43-9499-c271aa8db294)
+
+
 ## Multiclass Classification Using SVM
 
 SVM inherently supports binary classification. For multiclass problems, we use strategies to break down the problem into multiple binary classifications:
 
 - **One-vs-One**: Constructs a binary classifier for each pair of classes, requiring \(\frac{m(m-1)}{2}\) SVMs for \(m\) classes.
+
+![image](https://github.com/vansh-seth/AI-ML-Internship/assets/111755254/81697343-1421-45ee-b094-30e12372213d)
+
 - **One-vs-Rest**: Constructs a binary classifier for each class against all others, requiring \(m\) SVMs for \(m\) classes.
+
+![image](https://github.com/vansh-seth/AI-ML-Internship/assets/111755254/4bb9fb1a-57b5-47dd-a90b-7610cbcbcfa1)
 
 ### Example
 
