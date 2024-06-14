@@ -109,6 +109,10 @@ print(clf.predict([[1, 1]]))  # Output: [0.5]
 The run-time cost to construct a balanced binary tree is \(O(n \log(n))\) and the query time is \(O(\log(n))\). The tree construction involves searching through the features to find the one that offers the largest reduction in impurity, leading to a total cost of \(O(n \log(n) d)\), where \(d\) is the number of features.
 
 
+## Code Output:
+
+![image](https://github.com/vansh-seth/AI-ML-Internship/assets/111755254/98755e1e-484c-4e2e-bf76-2fcd1e1e6d80)
+
 # Decision Tree Result Explained
 
 A decision tree uses previous decisions to calculate the odds of whether you want to go see a comedian or not. Let’s break down the different aspects of the decision tree.
