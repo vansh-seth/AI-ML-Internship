@@ -104,15 +104,6 @@ clf = clf.fit(X, y)
 print(clf.predict([[1, 1]]))  # Output: [0.5]
 ```
 
-## Multi-output Problems
-
-### Handling Multiple Outputs
-
-```python
-# If Y is a 2D array of shape (n_samples, n_outputs), the resulting estimator
-# will predict multiple outputs simultaneously.
-```
-
 ## Computational Complexity
 
 The run-time cost to construct a balanced binary tree is \(O(n \log(n))\) and the query time is \(O(\log(n))\). The tree construction involves searching through the features to find the one that offers the largest reduction in impurity, leading to a total cost of \(O(n \log(n) d)\), where \(d\) is the number of features.
