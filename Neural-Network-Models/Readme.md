@@ -10,6 +10,9 @@ Multi-layer Perceptron (MLP) is a supervised learning algorithm capable of appro
 - **Hidden Layers:** Each neuron applies weighted summation followed by a non-linear activation (e.g., tanh function).
 - **Output Layer:** Transforms hidden layer outputs into final predictions.
 
+![image](https://github.com/vansh-seth/AI-ML-Internship/assets/111755254/681aeeb0-b587-4820-8cae-7016c62ccdd2)
+
+
 ### MLPClassifier (Classification)
 
 **Functionality:**
@@ -67,8 +70,4 @@ For MLP with n_samples, n_features, n_hidden layers, and n_output neurons, backp
 
 **Recommendation:** Start with fewer hidden neurons and layers to manage training complexity effectively.
 
-**References:**
-- [Scikit-learn MLPClassifier Documentation](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html)
-- [Scikit-learn MLPRegressor Documentation](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html)
 
-For more detailed examples and configurations, refer to the provided documentation and examples.
