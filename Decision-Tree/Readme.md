@@ -127,7 +127,7 @@ A decision tree uses previous decisions to calculate the odds of whether you wan
 
 ### Gini Calculation
 The Gini impurity for this split is calculated as:
-\[ \text{Gini} = 1 - \left(\frac{x}{n}\right)^2 - \left(\frac{y}{n}\right)^2 \]
+Gini = 1 - (probabitly of left)^2 - (probabiltiy of right)^2
 Where:
 - \( x \) = number of "GO" answers = 7
 - \( y \) = number of "NO" answers = 6
