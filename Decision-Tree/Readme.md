@@ -189,3 +189,12 @@ Gini = 1 - (7/13)^2 - (6/13)^2 = 0.497
 - Each split represents a decision point that filters comedians into "GO" or "NO" categories.
 - The Gini index measures the purity of each split, aiming for values closer to 0 for pure nodes.
 - The tree's structure allows for clear and interpretable decision rules based on the given criteria.
+
+
+## Classification Tree
+
+- It is a tree in which we canhave yes/no data as well as numeric data.
+- To classify a data work your way down the tree till you are at the leaf node.
+- Top most node is the root node.
+- The nodes where there is an arrow coming and and going out (both) that is a branch or an internal node.
+- The nodes where there is an arrow coming and but not going out that is our leaf node or leaf.
