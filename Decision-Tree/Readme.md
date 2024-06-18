@@ -133,7 +133,7 @@ Where:
 - \( y \) = number of "NO" answers = 6
 - \( n \) = total number of samples = 13
 
-\[ \text{Gini} = 1 - \left(\frac{7}{13}\right)^2 - \left(\frac{6}{13}\right)^2 = 0.497 \]
+Gini = 1 - (7/13)^2 - (6/13)^2 = 0.497 
 
 ## First Split
 
